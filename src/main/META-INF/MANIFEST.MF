@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: C:\Users\Harry Seddon\IdeaProjects\HazzBot\src\main\java\me\
+ Hazz\HazzBot\Main.java
+
