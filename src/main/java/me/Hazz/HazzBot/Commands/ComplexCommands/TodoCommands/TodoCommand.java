@@ -74,7 +74,7 @@ public class TodoCommand implements ICommand {
                 todo.MessageID = message.getIdLong();
                 CTodo.update(todo, event.getGuild());
                 message.addReaction("✅").queue();
-                message.addReaction("\uD83D\uDCDB").queue();
+                message.addReaction("\uD83D\uDEE0").queue();
             });
 
 

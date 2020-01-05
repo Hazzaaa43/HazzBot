@@ -72,7 +72,7 @@ public class TodoReactionUnEdit extends ListenerAdapter {
             event.getChannel().editMessageById(event.getReaction().getMessageIdLong(), embed.build()).queue(message -> {
                 message.clearReactions().queue();
                 message.addReaction("✅").queue();
-                message.addReaction("\uD83D\uDCDB").queue();
+                message.addReaction("\uD83D\uDEE0").queue();
             });
         }
     }

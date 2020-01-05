@@ -12,7 +12,7 @@ public class IssueCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "issue";
+        return "issue[disabled]";
     }
 
     @Override

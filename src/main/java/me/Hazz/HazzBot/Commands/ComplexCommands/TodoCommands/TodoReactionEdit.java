@@ -25,7 +25,7 @@ public class TodoReactionEdit extends ListenerAdapter {
         int RankTester = 0;
         String emojichannel = String.valueOf(event.getChannel().getIdLong());
         if (emojichannel.equals("531017256746876928")) {// Pixelmon Staff
-            if (event.getReactionEmote().getName().equals("\uD83D\uDCDB")) {
+            if (event.getReactionEmote().getName().equals("\uD83D\uDEE0")) {
                 List<Role> roles = event.getMember().getRoles();
                 for (Role r : roles) {
                     if (r.getName().equals(":::Manager:::") || r.getName().equals(":::Pixel RankHeads:::") || r.getName().equals("::Pixel Sr-Admin::") || r.getName().equals("::Pixel Admin::") || r.getName().equals("::Pixel Sr-Mod::")) {
@@ -35,7 +35,7 @@ public class TodoReactionEdit extends ListenerAdapter {
             }
         }
         if (emojichannel.equals("631320958262837259")) {// Vanilla Staff
-            if (event.getReactionEmote().getName().equals("\uD83D\uDCDB")) {
+            if (event.getReactionEmote().getName().equals("\uD83D\uDEE0")) {
                 List<Role> roles = event.getMember().getRoles();
                 for (Role r : roles) {
                     if (r.getName().equals(":::Manager:::") || r.getName().equals(":::Vanilla RankHeads:::") || r.getName().equals("::Vanilla Sr-Admin::") || r.getName().equals("::Vanilla Admin::") || r.getName().equals("::Vanilla Sr-Mod::")) {
@@ -46,7 +46,7 @@ public class TodoReactionEdit extends ListenerAdapter {
         }
 
         if (emojichannel.equals("632380870795329536")) {// TestBot
-            if (event.getReactionEmote().getName().equals("\uD83D\uDCDB")) {
+            if (event.getReactionEmote().getName().equals("\uD83D\uDEE0")) {
                 List<Role> roles = event.getMember().getRoles();
                 for (Role r : roles) {
                     if (r.getName().equals(":::Manager:::")) {
