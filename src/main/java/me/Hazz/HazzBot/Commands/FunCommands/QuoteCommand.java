@@ -46,12 +46,12 @@ public class QuoteCommand implements ICommand {
             if (message.Content.isEmpty()) {
                 EmbedBuilder error = new EmbedBuilder();
                 error.setColor(new Color(0xff0000));
-                error.addField("Missing Arguments", "Correct Usage: `" + Info.PREFIX + "quote [MessageID]`", false);
+                error.addField("Invalid Arguments", "Message has no content. Please try another MessageID", false);
                 error.setFooter("Command ran by " + event.getMember().getUser().getAsTag(), event.getMember().getUser().getAvatarUrl());
                 event.getChannel().sendMessage(error.build()).queue(msg2 -> msg2.delete().queueAfter(5, TimeUnit.SECONDS));
             }
 
-        } catch (ArrayIndexOutOfBoundsException | NumberFormatException e) {
+        } catch (Throwable e) {
             EmbedBuilder error = new EmbedBuilder();
             error.setColor(new Color(0xff0000));
             error.addField("Missing Arguments", "Correct Usage: `" + Info.PREFIX + "quote [MessageID]`", false);
