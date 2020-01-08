@@ -1,14 +1,15 @@
 package me.Hazz.HazzBot.Commands.FunCommands;
 
+import me.Hazz.HazzBot.Database.Controllers.CMessageLogger;
+import me.Hazz.HazzBot.Database.Objects.OMessageLogger;
 import me.Hazz.HazzBot.Interfaces.ICommand;
 import me.Hazz.HazzBot.Variables.Info;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class QuoteCommand implements ICommand {
@@ -28,25 +29,21 @@ public class QuoteCommand implements ICommand {
         try {
             long MessageID = Long.parseLong(newArgs[0]);
 
-            List<Message> msg = new ArrayList<>();
-            event.getGuild().getTextChannels().forEach(c -> {
-                try {
-                    msg.add(c.retrieveMessageById(MessageID).complete());
-                } catch (Exception e) {
-                }
-            });
+            OMessageLogger message = CMessageLogger.findByID(MessageID);
 
-            if (!msg.isEmpty()) {
+            if (!message.Content.isEmpty()) {
+                User Author = event.getJDA().getUserById(message.Author);
                 EmbedBuilder embed = new EmbedBuilder();
                 embed.setColor(new Color(0x3498db));
-                embed.setAuthor(msg.get(0).getAuthor().getAsTag(), null, msg.get(0).getAuthor().getAvatarUrl());
-                embed.setDescription(msg.get(0).getContentRaw());
-                embed.setFooter("#" + msg.get(0).getChannel().getName());
-                embed.setTimestamp(msg.get(0).getTimeCreated().toInstant());
+                embed.setAuthor(Author.getAsTag(), null, Author.getAvatarUrl());
+                embed.setDescription(message.Content);
+                embed.setFooter("#" + message.ChannelName);
+                Date timestamp = new Date(message.MessageDate);
+                embed.setTimestamp(timestamp.toInstant());
 
                 event.getChannel().sendMessage(embed.build()).queue();
             }
-            if (msg.isEmpty()) {
+            if (message.Content.isEmpty()) {
                 EmbedBuilder error = new EmbedBuilder();
                 error.setColor(new Color(0xff0000));
                 error.addField("Missing Arguments", "Correct Usage: `" + Info.PREFIX + "quote [MessageID]`", false);

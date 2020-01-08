@@ -6,6 +6,7 @@ public class OIssue {
     public String Type = "";
     public String Report = "";
     public String Screenshot = "";
+    public String Attachments = "";
     public long Timestamp = 0;
     public long MessageID = 0;
     public long Author = 0;
